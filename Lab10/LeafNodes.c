@@ -1,5 +1,5 @@
 int LeaftNode(Node* head){
-    if(head==NULL){
+    if(head->left==NULL&& head->right==NULL){
         return 1;
     }
     
