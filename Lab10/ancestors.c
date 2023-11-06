@@ -7,7 +7,7 @@ bool ancestors(Node* head, int key){
         return true;
     }
     
-    if(ancestors(head->left)||ancestors(head->right)){
+    if(ancestors(head->left,key)||ancestors(head->right,key)){
         printf("%d",head->data);
         return true;
     }
