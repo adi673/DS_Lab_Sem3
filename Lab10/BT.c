@@ -80,6 +80,58 @@ void postOrderIterative(Node* root) {
     }
 }
 
+void printParent(Node* head,int key){
+
+    if(head->left->data==key || head->right->data==key){
+        printf("%d", head->data);
+        return;
+    }
+    printParent(head->left,key);
+    printParent(head->right,key);
+    return;
+    
+}
+
+int depth(Node* head){
+    if(head==NULL){
+        return 0;
+    }
+    
+    int leftD=depth(head->left);
+    int rightD=depth(head->right);
+    if(leftD>rightD){
+        return leftD+1;
+    }
+    return rightD+1;
+}
+
+
+bool ancestors(Node* head, int key){
+    if(head==NULL){
+        return  false;
+    }
+    if(head->data==key){
+        return true;
+    }
+    
+    if(ancestors(head->left,key)||ancestors(head->right,key)){
+        printf("%d",head->data);
+        return true;
+    }
+    return false;
+}
+
+int LeaftNode(Node* head){
+    if(head->left==NULL&& head->right==NULL){
+        return 1;
+    }
+    
+    int LeftLeaf=LeaftNode(head-left);
+    int RightLeaf=LeaftNode(head-right);;
+    
+    return LeftLeaf+RightLeaf;
+}
+
 Node* CreateBT(Node* head){
     printf(" Value Node");
     int data;
