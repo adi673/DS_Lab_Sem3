@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct Node {
     int data;
@@ -122,12 +123,15 @@ bool ancestors(Node* head, int key){
 }
 
 int LeaftNode(Node* head){
+    if(head==NULL){
+        return 0;
+    }
     if(head->left==NULL&& head->right==NULL){
         return 1;
     }
     
-    int LeftLeaf=LeaftNode(head-left);
-    int RightLeaf=LeaftNode(head-right);;
+    int LeftLeaf=LeaftNode(head->left);
+    int RightLeaf=LeaftNode(head->right);;
     
     return LeftLeaf+RightLeaf;
 }
@@ -135,7 +139,7 @@ int LeaftNode(Node* head){
 Node* CreateBT(Node* head){
     printf(" Value Node");
     int data;
-    scanf(" %d ",&data);
+    scanf("%d ",&data);
     Node* newNode=CreateNode(data);
     if(data==-1){
         return NULL;
@@ -165,5 +169,17 @@ int main(){
     iterativePreorder(temp2);
     printf("\n");
     postOrderIterative(temp2);
+    printf("\n");
+    int leafNodes=LeaftNode(temp2);
+    printf("Give key to find ancestors");
+    int key;
+    scanf("%d",&key);
+    printf("\n");
+    ancestors(temp2,key);
+    int depthh=depth(temp2);
+    printf("Depth is :%d",depthh);
+    printf("\n");
+    printf("Parent of key is :");
+    printParent(temp2,key);
     
 }
