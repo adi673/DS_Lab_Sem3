@@ -161,6 +161,23 @@ void printBT(Node* root){
     printBT(root->right);
 }
 
+int identicalTrees(Node* a, Node* b)
+{
+    /*1. both empty */
+    if (a == NULL && b == NULL)
+        return 1;
+ 
+    /* 2. both non-empty -> compare them */
+    if (a != NULL && b != NULL) {
+        return (a->data == b->data
+                && identicalTrees(a->left, b->left)
+                && identicalTrees(a->right, b->right));
+    }
+ 
+    /* 3. one empty, one not -> false */
+    return 0;
+}
+
 int main(){
     Node* temp=NULL;
     Node* temp2=CreateBT(temp);
